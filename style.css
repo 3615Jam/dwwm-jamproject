@@ -1,0 +1,22 @@
+/* ----------[ toutes pages ]---------- */
+* {
+  border: 1px solid red;
+}
+
+ul {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+.btn_connexion_label {
+  font-size: 18px;
+}
+
+.highlight {
+  background-color: #f8f9fa;
+}
+
+/* ----------[ playground.php ]---------- */
+#playground {
+  border: 10px dashed green;
+}
