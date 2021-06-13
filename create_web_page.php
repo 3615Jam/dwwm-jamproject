@@ -1,6 +1,6 @@
 <?php
 
-// ----------[ génération auto des pages web ]---------- 
+// ----------[ SCRIPT - PHP ]---------- 
 
 /**
  * -------------------------
@@ -11,10 +11,10 @@
  * 
  * @param     string    $page_title      Titre de la page web, utilisé dans la balise 'title' du head et dans le 'h1' du body 
  * @param     string    $main_content    Contenu HTML à afficher dans la balise 'main' 
- * @param     array     $active          Tableau de bouléens, sert à rendre l'onglet du menu 'nav' actif sur la page correspondante 
+ * @param     array     $active          Tableau de bouléens, sert à rendre l'onglet du menu 'nav' actif ( = coloré) sur la page correspondante 
  * @param     string    $script_perso    [optionnel] Nom du fichier de script externe à utiliser (vide par défaut)
  * 
- * @return    string    $html            Chaine de caractères contenant le code HTML à afficher 
+ * @return    string    $html            Code HTML complet de la page à générer 
  * 
  */
 
@@ -34,20 +34,23 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
     $redirection_message = '';
     if (isset($_GET['c']) && !empty($_GET['c'])) {
         switch ($_GET['c']) {
-            case '1':
+            case 'u1':
                 $redirection_message = U1;
                 break;
-            case '2':
+            case 'u2':
                 $redirection_message = U2;
                 break;
-            case '3':
+            case 'u3':
                 $redirection_message = U3;
                 break;
-            case '4':
+            case 'u4':
                 $redirection_message = U4;
                 break;
-            case '5':
+            case 'u5':
                 $redirection_message = U5;
+                break;
+            case 'b2':
+                $redirection_message = B2;
                 break;
             default:
                 $redirection_message = 'Rien à signaler';
@@ -170,7 +173,7 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
             </div>
         </div>
 
-        <!-- ----------[ modal connexion ]---------- -->
+        <!-- ----------[ modal login ]---------- -->
         <div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -23,5 +23,5 @@ const U5 = '<div class="text-center my-5 alert alert-warning alert-dismissible f
 // --- liés à BDD : 
 // aucune donnée à afficher (tables BDD)
 const B1 = '<div class="text-center"><div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Oups !</strong> Il n\'y a rien à afficher ici.</div><a class="justify-content-center btn btn-info" href="bo.php">Retour au back-office</a></div>';
-// table mise à jour succès 
-const B2 = '<div class="text-center my-5 alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> La table a bien été mise à jour<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+// table mise à jour avec succès 
+const B2 = '<div class="text-center my-5 alert alert-success alert-dismissible fade show" role="alert"><strong>Et voila !</strong> Vos infos sont à jour.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';

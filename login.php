@@ -1,6 +1,8 @@
 <?php
 
-// Login : script de vérification user 
+// ----------[ SCRIPT - PHP ]---------- 
+// on vérifie si user existe dans BDD grâce à 'usr_mail' 
+// puis on vérifie la concordance entre les 'usr_pass' et 
 
 // ----------[ imports ]---------- 
 include_once('constants.php');
@@ -19,33 +21,30 @@ try {
     }
 
     // on prépare de la requête 
-    $qry = "SELECT * FROM users WHERE usr_mail=?";
+    $qry = 'SELECT * FROM users WHERE usr_mail=?';
     $res = $cnn->prepare($qry);
-    // on prépare les valeurs 
-    $vals = array($mail);
     // on execute la requête avec les valeurs 
-    $res->execute($vals);
+    $res->execute(array($mail));
     $row = $res->fetch();
-    var_dump($row);
-
-    if (is_array($row)) {
-        if (password_verify($pass, $row['usr_pass'])) {
-
-            // si 1 ligne est retournée --> match ok ! on se connecte
-            // if ($res->rowCount() === 1) {
-            // démarrage (ou récupération si existe) de session 
-            session_start();
-            $_SESSION['connected'] = true;
-            $_SESSION['session_id'] = session_id();
-            $_SESSION['usr_fname'] = $row['usr_fname'];
-            $_SESSION['usr_mail'] = $_POST['usr_mail'];
-            // routage vers playground.php
-            header('location:playground.php');
-        }
+    // si $row est un tableau, c'est qu'il y a une concordance de l'email 
+    if (is_array($row) && password_verify($pass, $row['usr_pass'])) {
+        // on vérifie alors si '$pass' coïncide avec le mot de passe crypté stocké en BDD 
+        // if (password_verify($pass, $row['usr_pass'])) {
+        // dans ce cas, on initialise la session 
+        session_start();
+        $_SESSION['connected'] = true;
+        $_SESSION['session_id'] = session_id();
+        $_SESSION['usr_fname'] = $row['usr_fname'];
+        $_SESSION['usr_mail'] = $mail;
+        // et on redirige vers playground.php
+        header('location:playground.php');
+        // } else {
+        //     echo "salut toi";
+        // }
     } else {
-        // routage vers index2.php avec infos 
-        header('location:index2.php?c=2');
+        // sinon on redirige vers accueil avec message d'info 
+        header('location:index2.php?c=u2');
     }
 } catch (Exception $e) {
-    echo $e->getMessage();
+    echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
 }

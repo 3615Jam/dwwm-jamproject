@@ -1,22 +1,112 @@
 /* ----------[ toutes pages ]---------- */
+
+/* border rouge partout pour l'aide à la mise en page */
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
+/* bouton 'full' - couleur custom */
+.btn-custom {
+  color: white;
+  background-color: rgb(255, 0, 191);
+  border-color: rgb(255, 0, 191);
+}
+
+.btn-custom:hover {
+  color: white;
+  background-color: rgb(226, 0, 150);
+  border-color: rgb(255, 0, 150);
+}
+
+.btn-custom:focus,
+.btn-custom.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 191, 0.5);
+}
+
+/* bouton 'outline' - couleur custom */
+.btn-outline-custom {
+  color: rgb(255, 0, 191);
+  background-color: transparent;
+  background-image: none;
+  border-color: rgb(255, 0, 191);
+}
+
+.btn-outline-custom:hover {
+  color: white;
+  background-color: rgb(255, 0, 191);
+  border-color: rgb(255, 0, 191);
+}
+
+.btn-outline-custom:focus,
+.btn-outline-custom.focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 191, 0.5);
+}
+
+/* liste (menu) */
 ul {
   padding-inline-start: 0;
   list-style-type: none;
 }
 
+/* taille boutons de connexion */
 .btn_connexion_label {
   font-size: 18px;
 }
 
+/* fond gris clair pour mettre en avant certains paragraphes */
 .highlight {
   background-color: #f8f9fa;
 }
 
+/* couleur d'emphase pour certains mots explicatifs */
+em {
+  color: rgb(255, 0, 191);
+}
+
 /* ----------[ playground.php ]---------- */
+
+/* délimitation de la zone de jeu */
 #playground {
   border: 10px dashed green;
+}
+
+/* ----------[ account.php ]---------- */
+
+/* mise en forme container image user */
+.usr_img_container {
+  width: 164px;
+  height: 164px;
+  position: relative;
+}
+
+/* mise en forme texte 'modifier' qui apparait par dessus image user */
+.usr_img_modif_text {
+  width: 164px;
+  height: 164px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  opacity: 0;
+  transition: all 0.15s ease-out;
+}
+
+/* apparition texte 'modifier' quand survol de image user */
+.usr_img_container:hover .usr_img_modif_text {
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: rgb(255, 0, 191); */
+  color: #00b74a;
+  border-radius: 3%;
+  /* border: 2px solid rgb(255, 0, 191); */
+  border: 1.5px solid #00b74a;
+  font-size: 1.3rem;
+  font-weight: 700;
+  transition: all 0.15s ease-in;
 }

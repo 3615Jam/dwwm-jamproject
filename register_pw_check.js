@@ -1,5 +1,5 @@
-
-// Vérification de la concordance des mots de passe avant envoi du formulaire : 
+// ----------[ SCRIPT - JS ]---------- 
+// avant envoi du formulaire d'inscription ou de modification du mot de passe, 
 // on vérifie si les strings des 2 champs mot de passe sont bien identiques 
 
 // on branche un écouteur d'évènements au formulaire "register" de la page 'index1.php'

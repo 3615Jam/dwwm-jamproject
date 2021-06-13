@@ -1,4 +1,8 @@
 <?php
+
+// ----------[ SCRIPT - PHP ]---------- 
+// modèle de nouvelle page du site 
+
 // ----------[ imports ]---------- 
 include_once('create_web_page.php');
 
@@ -6,7 +10,7 @@ include_once('create_web_page.php');
 // 1) définition des paramètres
 
 // titre principal de la page
-$page_title = "";
+$page_title = '';
 
 // contenu de la balise main ( = corps de page)
 $main_content = '';
