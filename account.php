@@ -109,26 +109,28 @@ $info_perso = '
                     <div class="card card-body mb-3">
                         <p>Ces informations sont les <em>vôtres</em>, vous en faites ce que vous voulez ;) Elles ne deviendront nécessaires que si vous effectuez un achat, pour établir la facture.</p>
                         <p>Si vous souhaitez les modifier, remplissez (ou videz) les champs souhaités, puis validez en cliquant sur le bouton <strong>"Mettre à jour"</strong>.</p>
-                        <p><span class="mr-3">📷</span>Pour modifier la <em>photo</em>, cliquez dessus et sélectionner un nouveau fichier, ou cliquez sur le bouton <strong>"Supprimer la photo"</strong> pour la retirer.</p>
+                        <p><span class="mr-3">📷</span>Pour modifier la <em>photo</em>, cliquez dessus et sélectionner un nouveau fichier, ou cliquez sur le bouton <strong>"Supprimer la photo"</strong> pour la retirer. L\'image doit être inférieure à <em>500 Ko</em> et de type <em>.jpg, .jpeg, .png</em> ou <em>.gif</em>.</p>
                         <p><span class="mr-3">📍</span>Le champ <em>"Ville"</em> se remplit automatiquement en fonction de votre <em>code postal</em>.</p>
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
-                <form enctype="multipart/form-data" action="update_usr_img.php" method="post" class="col-lg-3 col-md-5 d-inline">
+                <form enctype="multipart/form-data" action="update_usr_img.php" method="post" id="update_usr_img" class="col-lg-3 col-md-5 d-inline">
                     <div class="form-group">
                         <label class="d-block">Photo de profil</label>
                         <label for="usr_img">
-                            <div class="usr_img_container">
-                                <img style="width:164px" class="mx-auto border rounded-lg" alt="photo de profil utilisateur" src=' . (empty($row['usr_img']) ? "img/usr_logo.png" : $row['usr_img']) . '>
-                                <p class="usr_img_modif_text">Modifier</p>
+                            <div class="usr_img_container border rounded-lg d-flex justify-content-center align-items-center">
+                                <div>
+                                    <img id="usr_pic" alt="photo de profil utilisateur" src=' . (empty($row['usr_img']) ? "\"img/usr_logo.png\"" : $row['usr_img']) . '>
+                                    <p class="usr_img_modif_text">Modifier</p>
+                                </div>
                             </div>
                         </label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="512000">
-                        <!-- <input type="hidden" name="img_value" value="' . (!empty($row) ? $row['usr_img'] : 'test-img-value') . '"> --> 
                         <input type="file" name="usr_img" id="usr_img" accept=".gif, .jpg, .jpeg, .png" hidden>
+                        <input type="submit" name="upd_usr_img" id="upd_usr_img" hidden>
                         <div>
-                            <input type="submit" class="btn btn-outline-success" value="Supprimer la photo" id="del_usr_img" name="del_usr_img">
+                            <input type="submit" class="btn btn-outline-secondary" id="del_usr_img" name="del_usr_img" value="Supprimer la photo">
                         </div>
                     </div>
                 </form>
@@ -157,7 +159,7 @@ $info_perso = '
                             <input type="text" class="form-control" id="usr_city" name="usr_city" value="' . $row['usr_city'] . '" readonly>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success float-right">Mettre à jour</button>
+                    <button type="submit" class="btn btn-outline-success float-right">Mettre à jour</button>
                 </form>
             </div>
         </div>
@@ -177,12 +179,12 @@ $modal_mail = '
                 <form action="update_usr_mail.php" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="usr_mail">Email actuel : </label>
-                            <input class="form-control" type="email" name="usr_mail" id="usr_mail" placeholder="' . $row['usr_mail'] . '" readonly>
+                            <label for="old_usr_mail">Email actuel : </label>
+                            <input class="form-control" type="email" name="old_usr_mail" id="old_usr_mail" placeholder="' . $row['usr_mail'] . '" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="usr_pass">Nouvel email : </label>
-                            <input class="form-control" type="email" name="usr_mail" id="usr_mail" pattern="[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                            <label for="new_usr_mail">Nouvel email : </label>
+                            <input class="form-control" type="email" name="new_usr_mail" id="new_usr_mail" pattern="[a-z0-9._-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                         </div>
                     </div>
                     <div class="modal-footer">

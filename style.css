@@ -79,6 +79,12 @@ em {
   position: relative;
 }
 
+/* mise en forme image user */
+#usr_pic {
+  max-width: 160px;
+  max-height: 160px;
+}
+
 /* mise en forme texte 'modifier' qui apparait par dessus image user */
 .usr_img_modif_text {
   width: 164px;
@@ -102,10 +108,10 @@ em {
   justify-content: center;
   align-items: center;
   /* color: rgb(255, 0, 191); */
-  color: #00b74a;
+  color: #6c757d;
   border-radius: 3%;
   /* border: 2px solid rgb(255, 0, 191); */
-  border: 1.5px solid #00b74a;
+  border: 1.5px solid #6c757d;
   font-size: 1.3rem;
   font-weight: 700;
   transition: all 0.15s ease-in;

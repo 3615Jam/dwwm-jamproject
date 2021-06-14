@@ -76,7 +76,7 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
         <!-- ----------[ custom - css ]---------- -->
         <link rel="stylesheet" type="text/css" href="style.css">
         <!-- ----------[ custom - js ]---------- -->
-        <script defer src="register_pw_check.js"></script>
+        <script defer src="script.js"></script>
         <script defer src="' . $script_perso . '"></script>
     </head>
     <body class="container-fluid">';
@@ -99,22 +99,22 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
     $buttons_co = '
                 <div class="m-3">
                     <p class="btn_connexion_label">Accès à mon compte</p>
-                    <a class="btn ' . ($active[4] ? "btn-success" : "btn-info") . ' btn-lg" href="account.php" role="button">Compte</a>
+                    <a class="btn ' . ($active[4] ? "btn-success" : "btn-outline-success") . ' btn-lg" href="account.php" role="button">Compte</a>
                 </div>
                 <div class="m-3">
                     <p class="btn_connexion_label">Deconnexion</p>
-                    <a class="btn btn-danger btn-lg" href="logout.php" role="button">A bientôt</a>
+                    <a class="btn btn-outline-danger btn-lg" href="logout.php" role="button">A bientôt</a>
                 </div>';
 
     // boutons à afficher quand user déco 
     $buttons_deco = '
                 <div class="m-3">
                     <p class="btn_connexion_label">Nouvel utilisateur ?</p>
-                    <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
+                    <a class="btn btn-outline-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
                 </div>
                 <div class="m-3">
                     <p class="btn_connexion_label">Déjà inscrit ?</p>
-                    <a class="btn btn-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+                    <a class="btn btn-outline-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
                 </div>';
 
     // affichage des boutons adéquats via un ternaire 
