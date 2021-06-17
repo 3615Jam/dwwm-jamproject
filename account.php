@@ -8,10 +8,6 @@ include_once('create_web_page.php');
 include_once('session_check.php');
 include_once('pdo_connect.php');
 
-// ----------[ génération de la page web ]---------- 
-// titre principal de la page
-$page_title = 'Mon compte';
-
 // ----------[ requête ]---------- 
 try {
     $qry = 'SELECT * FROM users WHERE usr_mail=?';
@@ -107,19 +103,20 @@ $info_perso = '
                 </p>
                 <div class="collapse" id="info_perso">
                     <div class="card card-body mb-3">
-                        <p>Ces informations sont les <em>vôtres</em>, vous en faites ce que vous voulez ;) Elles ne deviendront nécessaires que si vous effectuez un achat, pour établir la facture.</p>
+                        <p>Ces informations sont les <em>vôtres</em>, vous en faites ce que vous voulez 😊</p> 
+                        <p>Vous pouvez remplir ou vider les champs comme bon vous semble. Ces informations ne sont pas nécessaires, sauf si vous effectuez un achat, afin d\'établir une facture conforme.</p>
                         <p>Si vous souhaitez les modifier, remplissez (ou videz) les champs souhaités, puis validez en cliquant sur le bouton <strong>"Mettre à jour"</strong>.</p>
                         <p><span class="mr-3">📷</span>Pour modifier la <em>photo</em>, cliquez dessus et sélectionner un nouveau fichier, ou cliquez sur le bouton <strong>"Supprimer la photo"</strong> pour la retirer. L\'image doit être inférieure à <em>500 Ko</em> et de type <em>.jpg, .jpeg, .png</em> ou <em>.gif</em>.</p>
-                        <p><span class="mr-3">📍</span>Le champ <em>"Ville"</em> se remplit automatiquement en fonction de votre <em>code postal</em>.</p>
+                        <p><span class="mr-3">📍</span>La <em>ville</em> se remplit automatiquement en fonction de votre <em>code postal</em>, ou fait apparaitre un menu déroulant si le code postal est commun à plusieurs villes.</p>
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
                 <form enctype="multipart/form-data" action="update_usr_img.php" method="post" id="update_usr_img" class="col-lg-3 col-md-5 d-inline">
-                    <div class="form-group">
+                    <div id="reload" class="form-group">
                         <label class="d-block">Photo de profil</label>
                         <label for="usr_img">
-                            <div class="usr_img_container border rounded-lg d-flex justify-content-center align-items-center">
+                            <div class="usr_img_container rounded-lg d-flex justify-content-center align-items-center">
                                 <div>
                                     <img id="usr_pic" alt="photo de profil utilisateur" src=' . (empty($row['usr_img']) ? "\"img/usr_logo.png\"" : $row['usr_img']) . '>
                                     <p class="usr_img_modif_text">Modifier</p>
@@ -156,7 +153,7 @@ $info_perso = '
                         </div>
                         <div class="form-group col-lg-10">
                             <label for="usr_city">Ville</label>
-                            <input type="text" class="form-control" id="usr_city" name="usr_city" value="' . $row['usr_city'] . '" readonly>
+                            <input class="form-control" id="usr_city" name="usr_city" value="' . $row['usr_city'] . '" readonly>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-outline-success float-right">Mettre à jour</button>
@@ -227,7 +224,12 @@ $modal_pass = '
         </div>
     </div>';
 
-// contenu de la balise main ( = corps de page)
+// ----------[ assemblage de la page web ]---------- 
+
+// titre principal de la page
+$page_title = 'Mon compte';
+
+// contenu de la balise 'main' ( = corps de page)
 $main_content = $info_connect . $modal_pass . $modal_mail . $info_perso;
 
 // on active l'onglet du menu 'nav' correspondant à la page en cours 
@@ -235,11 +237,11 @@ $main_content = $info_connect . $modal_pass . $modal_mail . $info_perso;
 $active = [false, false, false, false, true];
 
 // [optionnel] fichier de script externe 
-$script = '';
+$script = 'account.js';
 
-// 2) récupération des paramètres sous forme de tableau, pour améliorer la lisibilité 
+// récupération des paramètres sous forme de tableau, pour améliorer la lisibilité 
 $params = [$page_title, $main_content, $active, $script];
 
-// 3) affichage de la page web paramétrée 
+// affichage de la page web paramétrée 
 // on utilise ici un 'splat operator' ("...") : transforme le tableau $params en liste d'arguments 
 echo (createWebPage(...$params));

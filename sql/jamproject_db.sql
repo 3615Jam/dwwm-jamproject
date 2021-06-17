@@ -11,13 +11,13 @@ USE jamproject;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	usr_id BIGINT PRIMARY KEY UNIQUE AUTO_INCREMENT NOT NULL,
-    usr_pass VARCHAR(255) NOT NULL,
     usr_mail VARCHAR(255) UNIQUE NOT NULL,
+    usr_pass VARCHAR(255) NOT NULL,
     usr_fname VARCHAR(30),
     usr_lname VARCHAR(30),
     usr_adress VARCHAR(50),
-    usr_city VARCHAR(50),
     usr_zipcode VARCHAR(10),
+    usr_city VARCHAR(50),
     usr_img MEDIUMBLOB
 ) ENGINE=INNODB;
 

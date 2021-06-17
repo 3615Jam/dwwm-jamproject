@@ -70,7 +70,8 @@ try {
     // on execute la requête
     $res->execute($params);
     // et on redirige vers account avec message d'info (succès)
-    header('location:account.php?c=b2');
+    // echo "salut toi";
+    // header('location:account.php?c=b2');
 } catch (Exception $e) {
     echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
 }
