@@ -9,14 +9,14 @@
         <div id="test">
             <div id="zip">
                 <label>code postal</label><br>
-                <input name="zip">
+                <input class="css" name="zip">
             </div>
 
             <br>
 
             <div id="city">
                 <label>ville</label><br>
-                <input name="city">
+                <input class="css" name="city">
             </div>
 
             <br>
@@ -65,7 +65,7 @@
             $(function() {
                 $('#form1').submit(function(e) {
                     e.preventDefault();
-                    var form = $(this);
+                    let form = $(this);
                     // var post_url = form.attr('action');
                     // var post_data = form.serialize();
                     // On peut ajouter une image de chargement pour faire patienter l'internaute
@@ -73,18 +73,34 @@
                     //Appel AJAX
                     $.ajax({
                         type: 'POST',
-                        url: $(this).attr('action'),
-                        data: $(this).serialize(),
+                        url: form.attr('action'),
+                        data: form.serialize(),
                         success: function(msg) {
                             //Affichage du formulaire avec un effet
-                            $(form).load('test.php' + " #test")
-                            console.log('test');
-                            // $(form).fadeOut(800, function() {
-                            // form.html(msg).fadeIn().delay(2000);
-                            // $(form).fadeIn().delay(1000);
-                            // $(form).fadeIn().delay(1000);
+                            $(form).fadeOut(800, function() {
+                                // $(".css").css("background-color", "green");
+                                $(form).fadeIn().delay(800);
 
-                            // });
+                                let $el = $(".css"),
+                                    x = 1000,
+                                    originalColor = $el.css("background");
+
+                                $el.css("background", "green");
+                                setTimeout(function() {
+                                    $el.css("background", originalColor);
+                                }, x);
+
+
+
+
+                                // $(form).load('test.php' + " #test");
+
+                                // console.log('test');
+                                // form.html(msg).fadeIn().delay(2000);
+                                // $(form).fadeIn().delay(1000);
+                                // $(form).fadeIn().delay(1000);
+
+                            });
                         }
                     });
                 });

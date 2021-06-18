@@ -9,6 +9,6 @@ var_dump($_POST['city']);
 
 // header('location:test.php');
 
-$qry = 'UPDATE users SET usr_adress=? WHERE usr_mail=?';
+$qry = 'UPDATE users SET usr_address=? WHERE usr_mail=?';
 $res = $cnn->prepare($qry);
 $res->execute([$_POST['zip'], 'jm@greta.fr']);

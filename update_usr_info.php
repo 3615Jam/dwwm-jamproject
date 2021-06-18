@@ -22,7 +22,7 @@ foreach ($_POST as $key => $val) {
 // ----------[ requête ]---------- 
 try {
     // requête 
-    $qry = 'UPDATE users SET usr_fname=?, usr_lname=?, usr_adress=?, usr_zipcode=?, usr_city=? WHERE usr_mail=?';
+    $qry = 'UPDATE users SET usr_fname=?, usr_lname=?, usr_address=?, usr_zipcode=?, usr_city=? WHERE usr_mail=?';
     // on prépare la requête 
     $res = $cnn->prepare($qry);
     // on récupère le usr_mail 
@@ -32,7 +32,9 @@ try {
     // on execute la requête
     $res->execute($params);
     // et on redirige vers account avec message d'info (succès)
-    header('location:account.php?c=b2');
+    // V2 : avec ajout de AJAX jQuery, on reload automatiquement la div du formulaire, plus besoin de redirection 
+    // header('location:account.php?c=b2');
+    echo "yes";
 } catch (Exception $e) {
     echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
 }

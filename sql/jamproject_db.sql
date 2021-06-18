@@ -15,7 +15,7 @@ CREATE TABLE users (
     usr_pass VARCHAR(255) NOT NULL,
     usr_fname VARCHAR(30),
     usr_lname VARCHAR(30),
-    usr_adress VARCHAR(50),
+    usr_address VARCHAR(50),
     usr_zipcode VARCHAR(10),
     usr_city VARCHAR(50),
     usr_img MEDIUMBLOB

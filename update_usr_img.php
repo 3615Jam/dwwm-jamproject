@@ -51,10 +51,8 @@ try {
             echo '<a href="account.php">Retour</a>';
             exit();
         }
-    }
-
-    // en cas de suppression d'image, le formulaire est posté via le bouton "supprimer" qui est un input  
-    if ($_POST['del_usr_img']) {
+        // sinon il n'y a pas d'image : on envoie "NULL" pour supprimer la photo
+    } else {
         $params[0] = NULL;
     }
 
@@ -70,7 +68,7 @@ try {
     // on execute la requête
     $res->execute($params);
     // et on redirige vers account avec message d'info (succès)
-    // echo "salut toi";
+    // V2 : avec ajout de AJAX jQuery, on reload automatiquement la div du formulaire, plus besoin de redirection 
     // header('location:account.php?c=b2');
 } catch (Exception $e) {
     echo '<p class="alert alert-danger">ERREUR : ' . $e->getMessage() . '</p>';
