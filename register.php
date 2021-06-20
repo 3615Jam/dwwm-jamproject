@@ -10,7 +10,7 @@ include_once('pdo_connect.php');
 // ----------[ requête ]---------- 
 try {
     // 1) on commence par vérifier si le mail existe déjà 
-    $qry = 'SELECT * FROM users WHERE usr_mail=?';
+    $qry = 'SELECT * FROM usr WHERE mail=?';
     $res = $cnn->prepare($qry);
     $mail = htmlspecialchars($_POST['usr_mail']);
     $res->execute(array($mail));
@@ -21,7 +21,7 @@ try {
     } else {
         // 2) sinon on le crée 
         // requête 
-        $qry = 'INSERT INTO users (usr_mail, usr_pass) VALUES (?, ?)';
+        $qry = 'INSERT INTO usr (mail, pass) VALUES (?, ?)';
         // on prépare la requête 
         $res = $cnn->prepare($qry);
         // on récupère le mail en échappant les caractères spéciaux html

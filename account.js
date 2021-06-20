@@ -46,7 +46,7 @@ function getCity() {
                 // on remplace "#usr_city" avec le nouvel élément
                 usrCity.replaceWith(newElement);
                 // on rajoute les attributs nécessaires au nouvel élément ("classes" bootstrap, "id" et "name")
-                newElement.setAttribute("class", "form-control jam");
+                newElement.setAttribute("class", "form-control valid-effect");
                 newElement.setAttribute("id", "usr_city");
                 newElement.setAttribute("name", "usr_city");
                 // si l'élément est <input> on lui rajoute l'attribut "readonly"
@@ -221,9 +221,9 @@ $(document).ready(function () {
                 data: form.serialize(),
                 // si tout s'est passé correctement, on affiche la <div> mise à jour avec un effet de transition
                 success: function () {
-                    $(".jam").addClass("is-valid");
+                    $(".valid-effect").addClass("is-valid");
                     setTimeout(() => {
-                        $(".jam").removeClass("is-valid");
+                        $(".valid-effect").removeClass("is-valid");
                     }, 1000);
                 },
             });

@@ -14,7 +14,7 @@ $params[] = htmlspecialchars($_POST['new_usr_mail']);
 // ----------[ requête ]---------- 
 try {
     // requête 
-    $qry = 'UPDATE users SET usr_mail=? WHERE usr_mail=?';
+    $qry = 'UPDATE usr SET mail=? WHERE mail=?';
     // on prépare la requête 
     $res = $cnn->prepare($qry);
     // on récupère le usr_mail 

@@ -9,8 +9,9 @@ include_once('session_check.php');
 include_once('pdo_connect.php');
 
 // ----------[ requête ]---------- 
+// on récupère les informations du user connecté
 try {
-    $qry = 'SELECT * FROM users WHERE usr_mail=?';
+    $qry = 'SELECT * FROM usr WHERE mail=?';
     $res = $cnn->prepare($qry);
     $mail = $_SESSION['usr_mail'];
     $res->execute(array($mail));
@@ -79,7 +80,7 @@ $info_connect = '
                 <div class="form-group col-lg-6">
                     <label for="usr_mail">Email *</label>
                     <div class="input-group mb-3">
-                        <a class="btn btn-outline-secondary btn-block text-left" href="#" role="button" data-toggle="modal" data-target="#update_usr_mail">' . $row['usr_mail'] . '</a>
+                        <a class="btn btn-outline-secondary btn-block text-left" href="#" role="button" data-toggle="modal" data-target="#update_usr_mail">' . $row['mail'] . '</a>
                     </div>
                 </div>
                 <div class="form-group col-lg-6">
@@ -105,8 +106,8 @@ $info_perso = '
                     <div class="card card-body mb-3">
                         <p>Ces informations sont les <em>vôtres</em>, vous en faites ce que vous voulez 😊</p> 
                         <p>Vous pouvez remplir ou vider les champs comme bon vous semble. Ces informations ne sont pas nécessaires, sauf si vous effectuez un achat, afin d\'établir une facture conforme.</p>
-                        <p>Si vous souhaitez les modifier, remplissez (ou videz) les champs souhaités, puis validez en cliquant sur le bouton <strong>"Mettre à jour"</strong>.</p>
-                        <p><span class="mr-3">📷</span>Pour modifier la <em>photo</em>, cliquez dessus et sélectionner un nouveau fichier, ou cliquez sur le bouton <strong>"Supprimer la photo"</strong> pour la retirer. L\'image doit être inférieure à <em>500 Ko</em> et de type <em>.jpg, .jpeg, .png</em> ou <em>.gif</em>.</p>
+                        <p>Si vous souhaitez les modifier, remplissez (ou videz) les champs souhaités, puis validez en cliquant sur le bouton <strong>Mettre à jour</strong>.</p>
+                        <p><span class="mr-3">📷</span>Pour modifier la <em>photo</em>, cliquez dessus et sélectionner un nouveau fichier, ou cliquez sur le bouton <strong>Supprimer la photo</strong> pour la retirer. L\'image doit être inférieure à <em>500 Ko</em> et de type <em>.jpg, .jpeg, .png</em> ou <em>.gif</em>.</p>
                         <p><span class="mr-3">📍</span>La <em>ville</em> se remplit automatiquement en fonction de votre <em>code postal</em>, ou fait apparaitre un menu déroulant si le code postal est commun à plusieurs villes.</p>
                     </div>
                 </div>
@@ -118,7 +119,7 @@ $info_perso = '
                         <label for="usr_img">
                             <div class="usr_img_container rounded-lg d-flex justify-content-center align-items-center">
                                 <div>
-                                    <img id="usr_pic" alt="photo de profil utilisateur" src=' . (empty($row['usr_img']) ? "\"img/usr_logo.jpg\"" : $row['usr_img']) . '>
+                                    <img id="usr_pic" alt="photo de profil utilisateur" src=' . (empty($row['img']) ? "\"img/usr_logo.jpg\"" : $row['img']) . '>
                                     <p class="usr_img_modif_text">Modifier</p>
                                 </div>
                             </div>
@@ -136,25 +137,25 @@ $info_perso = '
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="usr_fname">Prénom</label>
-                                <input type="text" class="form-control jam" id="usr_fname" name="usr_fname" value="' . $row['usr_fname'] . '">
+                                <input type="text" class="form-control valid-effect" id="usr_fname" name="usr_fname" value="' . $row['fname'] . '">
                             </div>
                             <div class="form-group col-6">
                                 <label for="usr_lname">Nom</label>
-                                <input type="text" class="form-control jam" id="usr_lname" name="usr_lname" value="' . $row['usr_lname'] . '">
+                                <input type="text" class="form-control valid-effect" id="usr_lname" name="usr_lname" value="' . $row['lname'] . '">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="usr_address">Adresse</label>
-                            <input type="text" class="form-control jam" id="usr_address" name="usr_address" value="' . $row['usr_address'] . '">
+                            <input type="text" class="form-control valid-effect" id="usr_address" name="usr_address" value="' . $row['address'] . '">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-lg-2">
                                 <label for="usr_zipcode">Code postal</label>
-                                <input type="text" class="form-control jam" id="usr_zipcode" name="usr_zipcode" value="' . $row['usr_zipcode'] . '">
+                                <input type="text" class="form-control valid-effect" id="usr_zipcode" name="usr_zipcode" value="' . $row['zipcode'] . '">
                             </div>
                             <div class="form-group col-lg-10">
                                 <label for="usr_city">Ville</label>
-                                <input class="form-control jam" id="usr_city" name="usr_city" value="' . $row['usr_city'] . '" readonly>
+                                <input class="form-control valid-effect" id="usr_city" name="usr_city" value="' . $row['city'] . '" readonly>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-outline-success float-right">Mettre à jour</button>
@@ -179,7 +180,7 @@ $modal_mail = '
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="old_usr_mail">Email actuel : </label>
-                            <input class="form-control" type="email" name="old_usr_mail" id="old_usr_mail" placeholder="' . $row['usr_mail'] . '" readonly>
+                            <input class="form-control" type="email" name="old_usr_mail" id="old_usr_mail" placeholder="' . $row['mail'] . '" readonly>
                         </div>
                         <div class="form-group">
                             <label for="new_usr_mail">Nouvel email : </label>

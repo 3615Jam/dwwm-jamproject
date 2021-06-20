@@ -14,7 +14,7 @@ $params[] = password_hash(htmlspecialchars($_POST['usr_pass']), PASSWORD_DEFAULT
 // ----------[ requête ]---------- 
 try {
     // requête 
-    $qry = 'UPDATE users SET usr_pass=? WHERE usr_mail=?';
+    $qry = 'UPDATE usr SET pass=? WHERE mail=?';
     // on prépare la requête 
     $res = $cnn->prepare($qry);
     // on récupère le usr_mail 

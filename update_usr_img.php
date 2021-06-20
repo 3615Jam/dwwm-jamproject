@@ -58,7 +58,7 @@ try {
 
     // ----------[ requête - update usr_img]---------- 
     // requête 
-    $qry = 'UPDATE users SET usr_img=? WHERE usr_mail=?';
+    $qry = 'UPDATE usr SET img=? WHERE mail=?';
     // on prépare la requête 
     $res = $cnn->prepare($qry);
     // on récupère le usr_mail 
