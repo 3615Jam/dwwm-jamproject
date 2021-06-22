@@ -107,18 +107,18 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
                 </div>
                 <div class="m-3">
                     <p class="btn_connexion_label">Deconnexion</p>
-                    <a class="btn btn-outline-danger btn-lg" href="logout.php" role="button">A bientôt</a>
+                    <a class="btn btn-outline-custom btn-lg" href="logout.php" role="button">A bientôt</a>
                 </div>';
 
     // boutons à afficher quand user déco 
     $buttons_deco = '
                 <div class="m-3">
                     <p class="btn_connexion_label">Nouvel utilisateur ?</p>
-                    <a class="btn btn-outline-info btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
+                    <a class="btn btn-outline-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#register">Inscription</a>
                 </div>
                 <div class="m-3">
                     <p class="btn_connexion_label">Déjà inscrit ?</p>
-                    <a class="btn btn-outline-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
+                    <a class="btn btn-outline-custom btn-lg" href="#" role="button" data-toggle="modal" data-target="#login">Connexion</a>
                 </div>';
 
     // affichage des boutons adéquats via un ternaire 
@@ -127,18 +127,22 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
     $login_zone = ($connected ? $buttons_co : $buttons_deco);
 
     $header = '
-        <header class="row align-items-center text-center mb-5">
+        <header class="row align-items-center text-center mb-2">
             <div id="logo" class="col-lg-2 col-sm-2">
                 <img src="img/jamproject-128.png" alt="logo jam project">
             </div>
-            <div id="main_title" class="col-lg-8 col-sm-10">
+            <div id="main_title" class="col-lg-8 col-sm-10 align-self-end">
                 <h1 class="m-5">' . $page_title . '</h1>
-                <nav>' . $nav . '</nav>
             </div>
             <div id="login_zone" class="col-lg-2 col-sm-12">' . $login_zone . '</div>
         </header>';
 
-    $main = '<main><div id="redirection_message">' . $redirection_message . '</div> ' . $main_content . ' </main>';
+    $main = '
+        <div class="row">
+            <div class="col-2"></div>
+            <nav class="col-8 mb-3">' . $nav . '</nav>
+        </div>
+        <main><div id="redirection_message">' . $redirection_message . '</div> ' . $main_content . ' </main>';
 
     $footer = '<footer class="text-center"><p><small>© 2021 - Jam Project</small></p></footer>';
 

@@ -5,6 +5,14 @@
     /* border: 1px solid red; */
 }
 
+#main_title {
+    background-image: url("img/bg-central.png");
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 100%;
+}
+
 /* bouton 'full' - couleur custom */
 .btn-custom {
     color: white;
@@ -121,4 +129,19 @@ em {
 
 #city_list {
     padding-left: 12px;
+}
+
+/* ----------[ help.php ]---------- */
+#div_left {
+    background-image: url(img/bg-left.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#div_right {
+    background-image: url(img/bg-right.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
 }

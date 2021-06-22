@@ -11,7 +11,7 @@ $page_title = "Aide";
 // contenu de la balise main ( = corps de page)
 $main_content = '
 <div class="row">
-    <div class="col-2"></div>
+    <div id="div_left" class="col-2"></div>
     <div class="col-8 accordion mb-5" id="accordionExample">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -96,6 +96,7 @@ $main_content = '
             </div>
         </div>
     </div>
+    <div id="div_right" class="col-2"></div>
 </div>
 ';
 
