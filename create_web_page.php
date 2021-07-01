@@ -106,7 +106,7 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
                     <a class="btn ' . ($active[4] ? "btn-success" : "btn-outline-success") . ' btn-lg" href="account.php" role="button">Compte</a>
                 </div>
                 <div class="m-3">
-                    <p class="btn_connexion_label">Deconnexion</p>
+                    <p class="btn_connexion_label">Déconnexion</p>
                     <a class="btn btn-outline-custom btn-lg" href="logout.php" role="button">A bientôt</a>
                 </div>';
 
@@ -128,8 +128,8 @@ function createWebPage($page_title, $main_content, $active, $script_perso = '')
 
     $header = '
         <header class="row align-items-center text-center mb-2">
-            <div id="logo" class="col-lg-2 col-sm-2">
-                <img src="img/jamproject-128.png" alt="logo jam project">
+            <div id="logo_zone" class="col-lg-2 col-sm-2">
+                <img id="logo" src="img/bg-logo.png" alt="logo jam project">
             </div>
             <div id="main_title" class="col-lg-8 col-sm-10 align-self-end">
                 <h1 class="m-5">' . $page_title . '</h1>

@@ -10,7 +10,7 @@ const DB = 'jamproject';
 // ----------[ codes information ]---------- 
 // --- liés à USER : 
 // création user ok 
-const U1 = '<div class="text-center my-5 alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été crée avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+const U1 = '<div class="text-center my-5 alert alert-success alert-dismissible fade show" role="alert"><strong>Super !</strong> L\'utilisateur a été créé avec succès.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 // pb de connexion - mail ou mot de passe erroné
 const U2 = '<div class="text-center my-5 alert alert-danger alert-dismissible fade show" role="alert"><strong>Oups !</strong> Le mail ou le mot de passe est erroné.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 // connexion requise 
